@@ -20,15 +20,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - uses: Nuitka/Nuitka-Action@main
-        with:
-          nuitka-version: main
-          script-name: main.py
-          onefile: true
 
-      # Uploads artifact
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+      - name: 打包
+        run: |
+          pip install nuitka
+          nuitka --standalone --windows-icon-from-ico=icon.ico --output-dir=dist --output-filename=code-merger-py.exe main.py
+
+      # 上传到 Artifacts
+      - name: 上传 Artifacts
+        uses: actions/upload-artifact@v4
         with:
-          name: exe
-          path: build/main.exe
+          name: code-merger-py
+          path: dist/code-merger-py.exe
