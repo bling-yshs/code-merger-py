@@ -22,11 +22,11 @@ jobs:
       - name: 打包项目
         run: |
           pip install pyinstaller
-          pyinstaller -F main.py
+          pyinstaller --onefile --name code-merger-py --icon icon.ico main.py
 
       # 上传到 Artifacts
       - name: 上传 Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: main
-          path: dist/main.exe
+          name: code-merger-py
+          path: code-merger-py.exe
