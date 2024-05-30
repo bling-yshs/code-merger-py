@@ -1,0 +1,6 @@
+/.venv/
+/.idea/
+/output.md
+/dist/
+/build/
+/main.spec
