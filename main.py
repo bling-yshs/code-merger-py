@@ -1,4 +1,6 @@
 import os
+
+import pyperclip
 import tiktoken
 
 
@@ -43,6 +45,11 @@ def main():
     token_count = count_tokens(output_path)
     print(f"合并完成，结果保存在 {output_path} 中。")
     print(f"output.md 的 token 数为：{token_count}")
+    # 读取文件内容并复制到剪贴板
+    with open(output_path, encoding='utf-8') as f:
+        content = f.read()
+    pyperclip.copy(content)
+    print("已将输出内容复制到剪贴板")
 
 
 if __name__ == '__main__':
