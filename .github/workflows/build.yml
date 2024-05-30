@@ -22,7 +22,7 @@ jobs:
       - name: 打包项目
         run: |
           pip install pyinstaller
-          pyinstaller --onefile --name code-merger-py --icon icon.ico main.py
+          pyinstaller --onefile --name code-merger-py --icon icon.ico --hidden-import tiktoken.registry main.py
 
       # 上传到 Artifacts
       - name: 上传 Artifacts
